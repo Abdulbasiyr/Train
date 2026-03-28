@@ -1,5 +1,6 @@
 
-import { z } from 'zod'
+import { z } from 'https://cdn.jsdelivr.net/npm/zod@3.23.8/+esm'
+import { loginApi, signUpApi } from '/api/authApi.js';
 
 const errMessage = document.querySelector('.message')
 const signInForm = document.getElementById('signInForm');
@@ -35,6 +36,8 @@ signInForm.addEventListener('submit', (e) => {
   const parsed = signInObj.safeParse({email, password})
   if(!parsed.success) return errMessage.textContent = parsed.error.issues[0].message  
 
+  loginApi(parsed.data)
+
 });
 
 
@@ -50,5 +53,7 @@ signUpForm.addEventListener('submit', (e) => {
 
   const parsed = signUpObj.safeParse({name, email, password})
   if(!parsed.success) return errMessage.textContent = parsed.error.issues[0].message
+
+  signUpApi(parsed.data)
 
 });

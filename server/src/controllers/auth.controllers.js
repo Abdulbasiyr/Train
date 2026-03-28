@@ -1,4 +1,6 @@
+
 import { validateSignUp, validateLogin } from "../validation/auth.validation.js";
+import { serviceLogin, serviceSignUp } from "../services/auth.serivices.js";
 
 
 // signup
@@ -22,7 +24,6 @@ export async function signUpController(req, res) {
 export async function loginController(req, res) {
 
   try {
-
     const validatedData = validateLogin(req.body)
     const result = await serviceLogin(validatedData)
 

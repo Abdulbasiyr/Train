@@ -1,13 +1,12 @@
 
-import dotenv from 'dotenv'
-dotenv.config()
+const BASE_URL = 'http://localhost:3000'
 
 export async function baseRequest(path, options = {} ) {
   
-  const res = await fetch(`${process.env.BASE_URL}${path}`, {
+  const res = await fetch(`${BASE_URL}${path}`, {
     ...options,
-    header: {
-      'Content-Type': 'application/json',
+    headers: {
+     'Content-Type': 'application/json',
       ...options.header
     }
   })

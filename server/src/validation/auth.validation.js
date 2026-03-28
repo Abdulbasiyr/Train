@@ -1,5 +1,6 @@
 
 import { z } from 'zod'
+import  AppError  from '../utils/error.js'
 
 
 const signUpSchema = z.object({
@@ -15,7 +16,7 @@ const loginSchema = z.object({
 
 
 export function validateSignUp(data) {
-  const parsed = signUpSchema.safeParse(data)
+  const parsed = signUpSchema.safeParse(...data)
 
   if(!parsed.success) throw new AppError(parsed.error.issues[0].message, 400)
 
@@ -24,7 +25,8 @@ export function validateSignUp(data) {
 
 
 export function validateLogin(data) {
-  const parsed = loginSchema.safeParse(data)
+  return console.log(data)
+  const parsed = loginSchema.safeParse(...data)
 
   if(!parsed.success) throw new AppError(parsed.error.issues[0].message, 400)
     

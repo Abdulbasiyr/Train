@@ -1,6 +1,6 @@
 
 import bcrypt from 'bcrypt'
-import { createUser } from '../repository/auth.repository'
+import { createUser } from '../repository/auth.repository.js'
 import AppError from '../utils/error.js'
 
 const SALT_ROUNDS = 10

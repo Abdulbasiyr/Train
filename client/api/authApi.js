@@ -1,7 +1,7 @@
-import { baseRequest } from "./requestApi";
+import { baseRequest } from "/api/requestApi.js";
 
 export function loginApi(payload) {
-  return baseRequest('/auth/signin', {
+  return baseRequest('/auth/login', {
     method: 'POST',
     body: JSON.stringify(payload)
   })
