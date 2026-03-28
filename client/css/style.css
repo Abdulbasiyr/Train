@@ -1,0 +1,48 @@
+
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #e7e7e7;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 80px;
+  border-bottom: 1px solid #383838;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+h1 {
+  color: rgb(0, 207, 207);
+}
+
+.authContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.url {
+  width: 120px;
+  height: 35px;
+  border: 1px solid #4b4b4b;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #05ec65ee;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.url:active {
+  transform: scale(.98);
+}
+

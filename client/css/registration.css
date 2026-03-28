@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9e9e9;
+}
+
+.container {
+  width: 450px;
+  height: 350px;
+  border: 2px solid #7b03a0;
+  border-radius: 5px ;
+  user-select: none;
+}
+
+#signInForm, #signUpForm { display: none; }
+
+#signInForm.active, #signUpForm.active {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+}
+
+h1 { 
+  text-align: center; 
+  color: rgb(4, 170, 115);
+}
+
+input {
+  padding: 10px;
+  outline: none;
+  border: 1px solid #05b5c2ce;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+button {
+  height: 40px;
+  border: 1px solid #7b03a0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:active {
+  transform: scale(.97);
+}
+
+.message {
+  font-size: 15px;
+  text-align: center;
+  color: #ff0000;
+  text-shadow: 0 0 1px red;
+}
