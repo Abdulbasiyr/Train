@@ -1,8 +1,8 @@
 
-import express from 'node:express'
+import express from 'express'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import authRouter from './src/routes/auth.routes'
+import authRouter from './src/routes/auth.routes.js'
 
 const app  = express()
 const PORT = 3000

@@ -1,4 +1,4 @@
-import { validateSignUp, validateLogin } from "../validation/auth.validation";
+import { validateSignUp, validateLogin } from "../validation/auth.validation.js";
 
 
 // signup

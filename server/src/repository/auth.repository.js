@@ -1,12 +1,15 @@
 
-import prisma from "../../lib/prisma"
 
-export function findUserByEmail(email) {
-  return prisma.user.findUnique({ where: {email} })
+import prisma from '../../lib/prisma.js'
+
+
+// create user
+export function createUser(data) {
+  return prisma.user.create({data, select: { id: true, name: true, email: true } })
 }
 
 
-// create User
-export function createUser(data) {
-  return prisma.user.create({ data })
+// find by email
+export function findUserByEmail(email) {
+  return prisma.findUnique({ where: {email}, select: {id: true, email:true, password: true} })
 }
