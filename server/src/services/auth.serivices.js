@@ -1,23 +1,25 @@
-import { createUser, findUserByEmail } from "../repository/auth.repository"
 
+import { createUser, findUserByEmail } from "../repository/auth.repository"
+import { AppError } from "../utils/auth.utils"
+import bcrypt from 'bcrypt'
 
 
 // Signup
 export async function serviceSignUp(data) {
 
-  const { email } = data
+  const { email, name, password } = data
 
-  const user = await findUserByEmail(email)
-  if(user) throw new Error('User already exists')
+  const hashedPassword = await bcrypt.hash(password, 10)
+  const result = {email, name, password: hashedPassword}
 
   try {
-    const createdUser = await createUser(data)
+    const  createdUser = await createUser(result)
     return createdUser
-  } catch(err) {
-    if(err.code === 'P2002') {
-      throw new Error('User already exists')
+  } catch(error) {
+    if(error.code === 'P2002') {
+      throw new AppError('User already exists', 409)
     }
-    throw err
+    throw error
   }
 
 }

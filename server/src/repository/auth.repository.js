@@ -8,5 +8,5 @@ export function findUserByEmail(email) {
 
 // create User
 export function createUser(data) {
-  return prisma.user.create({ data: { data } })
+  return prisma.user.create({ data })
 }
