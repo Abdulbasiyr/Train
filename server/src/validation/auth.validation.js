@@ -16,7 +16,7 @@ const loginSchema = z.object({
 
 
 export function validateSignUp(data) {
-  const parsed = signUpSchema.safeParse(...data)
+  const parsed = signUpSchema.safeParse(data)
 
   if(!parsed.success) throw new AppError(parsed.error.issues[0].message, 400)
 

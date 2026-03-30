@@ -4,7 +4,7 @@ import { serviceLogin, serviceSignUp } from "../services/auth.serivices.js";
 
 
 // signup
-export async function signUpController(req, res) {
+export async function signUpController(req, res, next) {
 
   try {
 
@@ -14,14 +14,14 @@ export async function signUpController(req, res) {
     return res.status(201).json(result)
   } catch(err) {
     console.error(err)
-    return res.status(err.statusCode || 500).json({message: err.message || 'Internal server error'})
+    next(err)
   }
 
 }
 
 
 // login
-export async function loginController(req, res) {
+export async function loginController(req, res, next) {
 
   try {
     const validatedData = validateLogin(req.body)
@@ -30,7 +30,7 @@ export async function loginController(req, res) {
     return res.status(200).json(result)
   } catch(err) {
     console.error(err)
-    return res.status(err.statusCode || 500).json({message: err.message || 'Internal server error'})
+    next(err)
   }
 
 }
