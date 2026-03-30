@@ -5,3 +5,5 @@ node_modules
 /server/prisma
 
 
+
+/src/generated/prisma
