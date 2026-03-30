@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../client')))
 
 app.use('/auth', authRouter)
 
-app.use(errorMiddleware)
+app.use('/auth', errorMiddleware)
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)

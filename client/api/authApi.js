@@ -13,3 +13,12 @@ export function signUpApi(payload) {
     body: JSON.stringify(payload)
   })
 }
+
+
+// verify user
+export function verifyAuthUser() {
+  return baseRequest('/auth/verify/user', {
+    method: 'GET',
+    credentials: 'include'
+  })
+}

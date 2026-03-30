@@ -37,10 +37,12 @@ signUpForm.addEventListener('submit', async (e) => {
   const parsed = signUpObj.safeParse({name, email, password})
   if(!parsed.success) return errMessage.textContent = parsed.error.issues[0].message
 
-  const resultServer = await signUpApi(parsed.data)
-  errMessage.textContent = resultServer?.message
-  console.log(resultServer)
-
+  try {
+    const resultServer = await signUpApi(parsed.data)
+    console.log(resultServer)
+  } catch(err) {
+    errMessage.textContent = resultServer.message
+  }
 });
 
 

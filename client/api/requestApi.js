@@ -12,6 +12,7 @@ export async function baseRequest(path, options = {} ) {
   })
 
   const data = await res.json().catch(() => null)
+  if(!res.ok) throw new Error(data?.message || 'Request failed')
 
   return data
 
