@@ -1,15 +1,13 @@
 
+import prisma from "../../lib/prisma.js"
 
-import prisma from '../../lib/prisma.js'
 
-
-// create user
+// create
 export function createUser(data) {
-  return prisma.user.create({data, select: { id: true, name: true, email: true } })
-}
+  return prisma.user.create({ data, select: { id: true, name: true, email: true } })
+} 
 
-
-// find by email
+// find user by email
 export function findUserByEmail(email) {
-  return prisma.findUnique({ where: {email}, select: {id: true, email:true, password: true} })
+  return prisma.user.findMany({where: {email}, select: { id: true, name: true, email: true, password: true }})
 }
