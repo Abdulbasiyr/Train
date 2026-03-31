@@ -2,6 +2,7 @@
 import bcrypt from 'bcrypt'
 import { createUser, findUserByEmail } from '../repository/auth.repository.js'
 import AppError from '../utils/error.js'
+import { generateAccessToken, verifyRefreshToken } from '../utils/jwt.auth.js'
 
 
 const SALT_ROUNDS = 10
@@ -37,5 +38,22 @@ export async function serviceLogin(data) {
   if(!isPasswordValid) throw new AppError('Email or password invalid', 401)
 
   return { id: userData.id, email: userData.email, name: userData.name }
+
+}
+
+
+
+// service verify auth
+export function serviceVerifyAuth(token) {
+
+  if(!token) throw new AppError('Unauthorized', 401)
+
+  try {
+    const verifiedToken = verifyRefreshToken(token)
+    return generateAccessToken({id: verifiedToken.id, email: verifiedToken.email})
+  } catch {
+    throw new AppError('Unauthorized', 401)
+  }
+
 
 }

@@ -23,9 +23,10 @@ h1 {
 }
 
 .authContainer {
-  display: flex;
+  display: none;
   gap: 10px;
 }
+.authContainer.active { display: flex }
 
 .url {
   width: 120px;

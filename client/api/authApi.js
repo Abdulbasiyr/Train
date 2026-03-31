@@ -16,8 +16,8 @@ export function signUpApi(payload) {
 
 
 // verify user
-export function verifyAuthUser() {
-  return baseRequest('/auth/verify/user', {
+export function verifyAuth() {
+  return baseRequest('/auth/verify', {
     method: 'GET',
     credentials: 'include'
   })

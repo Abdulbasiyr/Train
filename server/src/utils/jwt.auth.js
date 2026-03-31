@@ -26,3 +26,15 @@ export function generateAccessToken(data) {
 
   return token
 }
+
+
+// verify refresh token
+export function verifyRefreshToken(token) {
+  return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
+}
+
+
+// verify access token
+export function verifyAccessToken(token) {
+  return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+}
