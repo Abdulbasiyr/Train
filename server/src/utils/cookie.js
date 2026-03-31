@@ -1,13 +1,13 @@
 
 
 
-export function resCookie(res, data) {
+export function resCookie(res, token) {
 
-  return res.cookie('refreshToken', data, 
+  return res.cookie('token', token, 
     {
       httpOnly: true,
       secure: false,
-      sameSite: 'none',
+      sameSite: 'lax',
       maxAge: 604800000
     }
   )

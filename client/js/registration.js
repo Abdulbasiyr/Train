@@ -39,6 +39,7 @@ signUpForm.addEventListener('submit', async (e) => {
 
   try {
     const resultServer = await signUpApi(parsed.data)
+    
     console.log(resultServer)
   } catch(err) {
     errMessage.textContent = resultServer.message
