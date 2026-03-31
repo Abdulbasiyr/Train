@@ -1,9 +1,6 @@
 
 import { validateSignUp, validateLogin } from "../validation/auth.validation.js";
 import { serviceLogin, serviceSignUp, serviceVerifyAuth } from "../services/auth.serivices.js";
-import { resCookie } from "../utils/cookie.js";
-import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../utils/jwt.auth.js";
-import AppError from "../utils/error.js";
 
 
 // signup
@@ -28,11 +25,7 @@ export async function controllerLogin(req, res, next) {
   try {
     const validatedData = validateLogin(req.body)
     const result        = await serviceLogin(validatedData)
-    
-    const refreshToken = generateRefreshToken(result)
-    const accessToken  = generateAccessToken(result)
-    resCookie(res, refreshToken)
-    return res.status(200).json({result, accessToken})
+    return res.status(200).json(result)
   } catch(err) {
     next(err)
   }
@@ -40,9 +33,10 @@ export async function controllerLogin(req, res, next) {
 }
 
 
-export async function controllerVerifyAuth(req, res, next) {
+// controller verify auth
+export function controllerVerifyAuth(req, res, next) {
 
-  const token = req.cookies.token
+  const token = req.cookies.refreshToken
 
   try {
     const accessToken = serviceVerifyAuth(token)
@@ -51,4 +45,4 @@ export async function controllerVerifyAuth(req, res, next) {
     next(err)
   }
 
-} 
+}

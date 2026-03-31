@@ -5,8 +5,8 @@ import { controllerVerifyAuth, controllerLogin, controllerSignUp } from "../cont
 
 const router = Router()
 
-router.post('/signup', signUpController)
-router.post('/login',  loginController)
+router.post('/signup', controllerSignUp)
+router.post('/login',  controllerLogin)
 router.get('verify',   controllerVerifyAuth)
 
 
